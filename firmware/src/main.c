@@ -162,14 +162,35 @@ void pwm_init(void) {
     DDRD |= (1 << PD6);
     TCCR0A = (1 << COM0A1) | (1 << WGM01) | (1 << WGM00);
     TCCR0B = (1 << CS01) | (1 << CS00);
+    TIMSK0 = (1 << TOIE0);
+    TCNT0 = 0x00;
     OCR0A = 0;
+}
+
+// ==============================================
+// Timer0 Interrupt Handler
+// ==============================================
+ISR(TIMER0_OVF_vect)
+{
+	if (new_adc_ready && prev_adc_value != adc_value) {
+		new_adc_ready = 0;
+		uart_print_adc(adc_value >> 2);
+            
+		if ((adc_value >> 2) < offset) {
+			OCR0A = map_value_limits((adc_value >> 2) + offset, 0, 255, 5, 250); // output limits = 5 - 250
+			}            
+		if ((adc_value >> 2) > offset) {
+			OCR0A = map_value_limits((adc_value >> 2) - offset, 0, 255, 5, 250); // output limits = 5 - 250
+			}
+		}
+	prev_adc_value = adc_value;
 }
 
 // ==============================================
 // ADC Interrupt Handler
 // ==============================================
 ISR(ADC_vect) {
-    adc_value = ADC;
+	adc_value = ADC;
     new_adc_ready = 1;
     ADCSRA |= (1 << ADSC);
 }
@@ -191,17 +212,6 @@ int main(void) {
     uart_puts("\r\nSystem Ready!\r\n");
     
     while (1) {
-        if (new_adc_ready && prev_adc_value != adc_value) {
-            new_adc_ready = 0;
-            uart_print_adc(adc_value >> 2);
-            
-            if ((adc_value >> 2) < offset) {
-               OCR0A = map_value_limits((adc_value >> 2) + offset, 0, 255, 5, 250); // output limits = 5 - 250
-            }            
-            if ((adc_value >> 2) > offset) {
-               OCR0A = map_value_limits((adc_value >> 2) - offset, 0, 255, 5, 250); // output limits = 5 - 250
-            }
-        }
-        prev_adc_value = adc_value;
+        //
     }
 }
