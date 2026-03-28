@@ -31,7 +31,7 @@
 *.s19
 *.elf
 *.cof
-*.hex
+#*.hex
 *.map
 *.exe
 
