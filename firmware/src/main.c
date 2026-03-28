@@ -11,7 +11,7 @@
 
 volatile uint16_t adc_value = 0;
 volatile uint16_t prev_adc_value = 0;
-volatile uint8_t new_adc_ready = 0;
+volatile uint16_t new_adc_ready = 0;
 const uint16_t center = 512;
 volatile uint16_t offset = 0;
 
