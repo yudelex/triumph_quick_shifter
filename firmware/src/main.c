@@ -13,6 +13,18 @@ volatile uint16_t adc_value = 0;
 volatile uint16_t prev_adc_value = 0;
 volatile uint8_t new_adc_ready = 0;
 const uint16_t center = 512;
+volatile uint16_t delta = 0;
+
+void startup_hall_center(void) {
+    int i = 0;
+    while (i < 10) {
+        if (new_adc_ready) {
+            new_adc_ready = 0;
+            i++;
+            delta += adc_value;
+        }
+    }
+}
 
 // =========================================================================
 // Proportional mapping of a value from one range to another
@@ -163,7 +175,12 @@ int main(void) {
     
     sei();  // Enable interrupts
     
-    uart_puts("\r\nADC->PWM System Ready\r\n");
+    startup_hall_center();
+    
+    uart_puts("Hall center = ");
+    uart_putnum(delta / 10);
+    
+    uart_puts("\r\nSystem Ready!\r\n");
     
     while (1) {
         if (new_adc_ready && prev_adc_value != adc_value) {
