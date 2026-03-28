@@ -9,7 +9,7 @@
 
 # Executables (ELF files for AVR)
 *.elf
-*.hex
+#*.hex
 *.eep
 *.bin
 *.map
