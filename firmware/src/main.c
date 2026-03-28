@@ -196,10 +196,10 @@ int main(void) {
             uart_print_adc(adc_value >> 2);
             
             if ((adc_value >> 2) < offset) {
-               OCR0A = map_value_limits((adc_value >> 2) + offset, 0, 255, 5, 250);
+               OCR0A = map_value_limits((adc_value >> 2) + offset, 0, 255, 5, 250); // output limits = 5 - 250
             }            
             if ((adc_value >> 2) > offset) {
-               OCR0A = map_value_limits((adc_value >> 2) - offset, 0, 255, 5, 250);
+               OCR0A = map_value_limits((adc_value >> 2) - offset, 0, 255, 5, 250); // output limits = 5 - 250
             }
         }
         prev_adc_value = adc_value;
