@@ -49,6 +49,9 @@ OBJCOPY = avr-objcopy
 # Object dump utility (for disassembly)
 OBJDUMP = avr-objdump
 
+# Compiler flags: specify MCU, set CPU frequency, include debug symbols, disable optimization
+CFLAGS = -mmcu=$(MCU) -DF_CPU=$(F_CPU) -ggdb -O0
+
 # Size utility
 SIZE = avr-size
 

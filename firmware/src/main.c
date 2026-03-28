@@ -12,8 +12,7 @@
 volatile uint16_t adc_value = 0;
 volatile uint16_t prev_adc_value = 0;
 volatile uint8_t new_adc_ready = 0;
-const uint8_t pwm_min = 5;
-const uint8_t pwm_max = 250;
+const uint16_t center = 512;
 
 // =========================================================================
 // Proportional mapping of a value from one range to another
@@ -150,15 +149,7 @@ void pwm_init(void) {
 ISR(ADC_vect) {
     adc_value = ADC;
     new_adc_ready = 1;
-    if (adc_value >> 2 <= pwm_min) {
-        OCR0A = (uint8_t)(adc_value = pwm_min);  // Update PWM
-    }
-    else OCR0A = (uint8_t)(adc_value >> 2);
-    
-    if (adc_value >> 2 >= pwm_max) {
-        OCR0A = (uint8_t)(adc_value = pwm_max);
-    }
-    else OCR0A = (uint8_t)(adc_value >> 2);  // Update PWM
+    OCR0A = map_value_limits((adc_value >> 2), 5, 250, 5, 250);
     ADCSRA |= (1 << ADSC);
 }
 
