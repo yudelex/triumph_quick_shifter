@@ -144,7 +144,13 @@ $(TARGET_LSS): $(TARGET_ELF) | $(BUILDDIR)
 
 # Display memory usage
 size: $(TARGET_ELF)
-	$(SIZE) -C --mcu=$(MCU) $<
+	@echo ""
+	@echo "========================================="
+	@echo "Memory usage summary:"
+	@echo "========================================="
+	avr-size $(TARGET_ELF)
+	@echo "========================================="
+	@echo ""
 
 # ------ Programming with AVRDUDE ------
 # Program flash memory (main firmware)
