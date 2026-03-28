@@ -1,0 +1,174 @@
+# Compiled Object files
+*.o
+*.obj
+*.out
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Executables (ELF files for AVR)
+*.elf
+*.hex
+*.eep
+*.bin
+*.map
+
+# AVR Studio / Atmel Studio / Microchip Studio
+*.aps
+*.ncb
+*.opt
+*.plg
+*.user
+*.dep
+*.ewp
+*.eww
+*.ewd
+*.eew
+*.eeprom
+*.obj
+*.sbl
+*.s19
+*.elf
+*.cof
+*.hex
+*.map
+*.exe
+
+# IAR Embedded Workbench
+*.ewp
+*.eww
+*.ewd
+*.eew
+*.dep
+*.pbi
+*.pbd
+*.a
+*.sim
+*.cspy.bat
+*.dni
+*.wsdt
+*.xcl
+*.dbg
+*.hdr
+*.log
+*.lst
+*.mp
+*.pptx
+*.r79
+*.r81
+*.r83
+*.s79
+*.s81
+*.s83
+*.sim
+*.vcc
+*.vwr
+
+# Eclipse / AVReclipse
+.cproject
+.project
+.settings/
+.metadata/
+*.launch
+*.prefs
+
+# Makefile build artifacts
+.depend
+*.lst
+*.lss
+*.sym
+*.o
+*.d
+
+# Proteus Simulation Files
+# Backup files
+*.DBK
+*.BAK
+*.DIF
+*.PBK
+
+# Proteus project files (keep .pdsprj, ignore others)
+*.DSN
+*.LYT
+*.PLD
+*.PDF
+*.PSF
+*.VIF
+*.TIF
+*.WAV
+
+# Proteus compiled/backup files
+*.PDB
+*.IDX
+*.PKL
+*.PAK
+*.ELC
+
+# Proteus specific - these are large binary files generated during simulation
+*.SDF
+*.VSM
+
+# Proteus log files
+*.LOG
+
+# Design files (usually you want to keep .pdsprj, ignore backups)
+*.pdsprj.*
+*~.pdsprj
+
+# Visual Studio (if using Windows)
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+
+# CodeBlocks
+*.cbp
+*.layout
+*.depend
+*.workspace
+*.cbTemp
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+CMakeUserPresets.json
+
+# Documentation build folders
+doc/html/
+doc/latex/
+doxygen/
+
+# Debug and Release folders
+Debug/
+Release/
+Debug_*/
+Release_*/
+
+# Temporary files
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE files (generic)
+.vscode/
+.idea/
+*.code-workspace
