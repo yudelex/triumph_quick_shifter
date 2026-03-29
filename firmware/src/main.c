@@ -190,7 +190,7 @@ ISR(TIMER0_OVF_vect)
 // ADC Interrupt Handler
 // ==============================================
 ISR(ADC_vect) {
-	adc_value = ADC;
+    adc_value = ADC;
     new_adc_ready = 1;
     ADCSRA |= (1 << ADSC);
 }
